@@ -12,8 +12,10 @@ export function Card({ event, url }: CardProps) {
       className="relative aspect-video rounded-lg overflow-hidden cursor-pointer"
       href={url}
     >
-      <div className="absolute inset-x-0 bottom-0 p-2">
-        <h1 className="text-sm text-primary-foreground">{event.name}</h1>
+      <div className="absolute inset-x-0 bottom-0 p-2 bg-black/20">
+        <h1 className="text-sm text-primary-foreground font-semibold">
+          {event.name}
+        </h1>
         <p className="text-xs text-secondary-foreground">
           {event.locationId} - {new Date(event.date).toLocaleDateString()}
         </p>
