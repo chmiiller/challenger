@@ -17,7 +17,8 @@ export function Card({ event, url }: CardProps) {
           {event.name}
         </h1>
         <p className="text-xs text-secondary-foreground">
-          {event.locationId} - {new Date(event.date).toLocaleDateString()}
+          {event.location?.name}, {event.location?.city} -{" "}
+          {new Date(event.date).toLocaleDateString()}
         </p>
       </div>
 

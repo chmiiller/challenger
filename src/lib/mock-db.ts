@@ -3,15 +3,9 @@ import { getEvents, getLocations } from "./mock-data"
 export const database = {
   getPopularEvents: async (amount: number, offset: number) => {
     const events = await getEvents();
-    const locations = await getLocations();
-    
     return events
       .toSorted((a, b) => b.alerts - a.alerts)
-      .slice(offset, amount + offset)
-      .map((event) => ({
-        ...event,
-        location: locations.get(event.locationId),
-      }));
+      .slice(offset, amount + offset);
   },
   getEvent: async (id: number) => {
     const events = await getEvents();
@@ -26,5 +20,8 @@ export const database = {
   getLocation: async (id: number) => {
     const locations = await getLocations();
     return locations.get(id) ?? null
-  }
+  },
+  getLocations: async () => {
+    return await getLocations();
+  },
 }
