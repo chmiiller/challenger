@@ -67,6 +67,7 @@ export function PopularEvents() {
             src={event.imageUrl}
             width={320}
             height={200}
+            alt="event image"
           />
         </div>
       ))}

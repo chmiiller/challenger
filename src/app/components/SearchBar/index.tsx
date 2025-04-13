@@ -14,9 +14,19 @@ export function SearchBar({ onChange }: SearchBarProps) {
         placeholder="Search"
         onChange={(e) => {
           const searchTerm = e.currentTarget.value;
-          onChange(searchTerm);
+          debounce(() => {
+            onChange(searchTerm);
+          });
         }}
       />
     </view>
   );
 }
+
+let timeoutId: NodeJS.Timeout;
+const debounce = (func: () => void) => {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(() => {
+    func();
+  }, 200);
+};
