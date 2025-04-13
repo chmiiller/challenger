@@ -23,7 +23,7 @@ export function PopularEvents() {
 
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-      <h1 className="text-xl text-black md:col-span-3 flex items-center gap-2">
+      <h1 className="text-xl text-foreground md:col-span-3 flex items-center gap-2">
         <Calendar /> Popular events
       </h1>
 
