@@ -1,16 +1,16 @@
 "use client";
 
-import { Calendar, Loader, AArrowUp } from "lucide-react";
-import Image from "next/image";
+import { Calendar, Loader } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SearchBar } from "../SearchBar";
 import { Card } from "../Card";
+import { type Event } from "@/types/Event";
 
 export function PopularEvents() {
-  const [events, setEvents] = useState<any[]>([]);
-  const [eventsResult, setEventsResult] = useState<any[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [eventsResult, setEventsResult] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
     const fetchPopularEvents = async () => {
@@ -27,15 +27,31 @@ export function PopularEvents() {
   }, []);
 
   useEffect(() => {
-    if (searchValue) {
-      const filteredEvents = events.filter((evt) =>
-        evt.name.toLowerCase().includes(searchValue.toLowerCase())
-      );
+    if (searchTerm) {
+      const filteredEvents = events.filter((evt) => {
+        const term = searchTerm.toLowerCase();
+        const matchName = evt.name.toLowerCase().includes(term);
+        const matchLocationCity = evt.location?.city
+          .toLowerCase()
+          .includes(term);
+        const matchLocationName = evt.location?.name
+          .toLowerCase()
+          .includes(term);
+        const matchLocationCountry = evt.location?.country
+          .toLowerCase()
+          .includes(term);
+        return (
+          matchName ||
+          matchLocationCity ||
+          matchLocationName ||
+          matchLocationCountry
+        );
+      });
       setEventsResult(filteredEvents);
     } else {
       setEventsResult(events);
     }
-  }, [searchValue]);
+  }, [searchTerm]);
 
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
@@ -43,8 +59,8 @@ export function PopularEvents() {
         <Calendar /> Popular events
       </h1>
       <SearchBar
-        onChange={(searchInput) => {
-          setSearchValue(searchInput);
+        onChange={(term) => {
+          setSearchTerm(term);
         }}
       />
 

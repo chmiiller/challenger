@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { type Event } from "@/types/Event";
+
 type CardProps = {
-  event: any;
+  event: Event;
   url: string;
 };
 
