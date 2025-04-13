@@ -12,6 +12,10 @@
     --secondary-foreground: 0 0 90%;
   }
 
+  .popup {
+   color: black 
+  }
+
   @media (prefers-color-scheme: dark) {
     :root {
       --background: 212 22% 13;

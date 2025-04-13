@@ -9,6 +9,7 @@ import { type TicketEvent } from "@/types/TicketEvent";
 import Button from "@/app/components/Buttons/Button";
 import IconButton from "@/app/components/Buttons/IconButton";
 import IconLabel from "@/app/components/Labels/IconLabel";
+import { Map } from "@/app/components/Map";
 
 type DetailsProps = {
   params: {
@@ -62,9 +63,11 @@ export default function Details({ params }: DetailsProps) {
 
             {/* Calendar and Location */}
             <div className="flex flex-col mt-7 items-center">
-              <IconLabel label={new Date(event.date).toLocaleDateString()}>
-                <Calendar size={24} color={"#FF0084"} />
-              </IconLabel>
+              <div className="mb-3">
+                <IconLabel label={new Date(event.date).toLocaleDateString()}>
+                  <Calendar size={24} color={"#FF0084"} />
+                </IconLabel>
+              </div>
               <IconLabel
                 label={`${event?.location?.name}, ${event?.location?.city}`}
               >
@@ -85,12 +88,15 @@ export default function Details({ params }: DetailsProps) {
             <div className="flex flex-col w-full mt-9 p-4">
               <h1 className="text-2xl font-bold">{"More info"}</h1>
               {/* Description container */}
-              <div className="w-full rounded-md bg-black p-3">
+              <div className="w-full rounded-md bg-slate-800/75 p-3 mt-4">
                 <h1 className="text-base">{event.description}</h1>
               </div>
-              {/* Map */}
-              <div className="flex flex-col w-full h-64 mt-9 p-4">
-                <h1 className="text-2xl font-bold">{"Map"}</h1>
+            </div>
+            {/* Map */}
+            <div className="flex flex-col w-full mt-4 p-4">
+              <h1 className="text-2xl font-bold">{"Map"}</h1>
+              <div className="h-[40vh] mt-4">
+                <Map event={event} />
               </div>
             </div>
           </div>
