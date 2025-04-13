@@ -54,25 +54,28 @@ export function PopularEvents() {
   }, [searchTerm]);
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-      <h1 className="text-xl text-foreground md:col-span-3 flex items-center gap-2">
-        <Calendar /> Popular events
-      </h1>
-      <SearchBar
-        onChange={(term) => {
-          setSearchTerm(term);
-        }}
-      />
+    <div>
+      <header className="p-2">
+        <h1 className="text-xl text-foreground md:col-span-3 flex items-center gap-2 mb-7">
+          <Calendar /> Popular events
+        </h1>
+        <SearchBar
+          onChange={(term) => {
+            setSearchTerm(term);
+          }}
+        />
+      </header>
 
-      {loading && (
-        <div className="grid place-items-center md:col-span-3 p-10">
-          <Loader className="animate-spin" />
-        </div>
-      )}
-
-      {eventsResult.map((event) => (
-        <Card event={event} url={`/details/${event.id}`} />
-      ))}
+      <main className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-7">
+        {loading && (
+          <div className="grid place-items-center md:col-span-3 p-10">
+            <Loader className="animate-spin" />
+          </div>
+        )}
+        {eventsResult.map((event) => (
+          <Card event={event} url={`/details/${event.id}`} />
+        ))}
+      </main>
     </div>
   );
 }
