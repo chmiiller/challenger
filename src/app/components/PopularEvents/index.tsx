@@ -4,11 +4,11 @@ import { Calendar, Loader } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SearchBar } from "../SearchBar";
 import { Card } from "../Card";
-import { type Event } from "@/types/Event";
+import { type TicketEvent } from "@/types/TicketEvent";
 
 export function PopularEvents() {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [eventsResult, setEventsResult] = useState<Event[]>([]);
+  const [events, setEvents] = useState<TicketEvent[]>([]);
+  const [eventsResult, setEventsResult] = useState<TicketEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
 

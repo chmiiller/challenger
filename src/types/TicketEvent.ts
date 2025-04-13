@@ -1,6 +1,6 @@
 import { type EventLocation } from '@/types/EventLocation';
 
-export type Event = {
+export type TicketEvent = {
   id: number,
   name: string;
   alerts: number;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { type Event } from "@/types/Event";
+import { type Event } from "@/types/TicketEvent";
 
 type CardProps = {
   event: Event;

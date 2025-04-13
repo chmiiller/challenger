@@ -1,5 +1,5 @@
 import { database } from "@/lib/mock-db"
-import { type Event } from "@/types/Event";
+import { type TicketEvent } from "@/types/TicketEvent";
 import { type EventLocation } from "@/types/EventLocation";
 
 export async function GET(request: Request) {
@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const amount = Number(searchParams.get("amount")) ?? 5;
   const offset = Number(searchParams.get("offset")) ?? 0;
 
-  const events: Event[] = await database.getPopularEvents(amount, offset);
+  const events: TicketEvent[] = await database.getPopularEvents(amount, offset);
   const locations: Map<number, EventLocation> = await database.getLocations();
 
   return Response.json({
