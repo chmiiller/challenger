@@ -163,3 +163,7 @@ const events = [
 export async function getEvents() {
   return events
 }
+
+export async function getLocations() {
+  return new Map(locations.map(location => ([location.id, location])));
+}
