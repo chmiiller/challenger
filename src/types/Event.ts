@@ -1,12 +1,12 @@
-import { type Location } from '@/types/EventLocation';
+import { type EventLocation } from '@/types/EventLocation';
 
 export type Event = {
   id: number,
   name: string;
   alerts: number;
-  date: Date;
+  date: string;
   locationId: number;
-  description: string;
+  description: string | null;
   imageUrl: string;
-  location?: Location;
+  location?: EventLocation;
 };

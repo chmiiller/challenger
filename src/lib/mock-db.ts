@@ -9,15 +9,9 @@ export const database = {
       .toSorted((a, b) => b.alerts - a.alerts)
       .slice(offset, amount + offset);
   },
-  getEvent: async (id: number) => {
-    const events = await getEvents();
-    const evt = events.find((event) => (event.id === id));
-    if (!evt) return null;
-    const locations = await getLocations();
-    return {
-      ...evt,
-      location: locations.get(evt.locationId) ?? null,
-    };  
+  getEvent: async (id: number): Promise<Event | null> => {
+    const events = await getEvents() as unknown as Event[];
+    return events.find((event) => (event.id === id)) ?? null;
   },
   getLocation: async (id: number) => {
     const locations = await getLocations();
