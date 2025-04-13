@@ -8,6 +8,7 @@ import { Logo } from "../../components/Logo";
 import { type TicketEvent } from "@/types/TicketEvent";
 import Button from "@/app/components/Buttons/Button";
 import IconButton from "@/app/components/Buttons/IconButton";
+import IconLabel from "@/app/components/Labels/IconLabel";
 
 type DetailsProps = {
   params: {
@@ -41,6 +42,7 @@ export default function Details({ params }: DetailsProps) {
       {event && (
         <div className="flex justify-center">
           <div className="lg:w-1/2 xl:w-2/6">
+            {/* Hero image */}
             <div className="flex justify-center">
               <Image
                 className="w-full max-w-lg md:max-w-xl lg:max-w-3xl rounded-md mt-9"
@@ -57,21 +59,19 @@ export default function Details({ params }: DetailsProps) {
                 {event.name}
               </h1>
             </div>
+
             {/* Calendar and Location */}
             <div className="flex flex-col mt-7 items-center">
-              <div className="flex flex-row items-center">
+              <IconLabel label={new Date(event.date).toLocaleDateString()}>
                 <Calendar size={24} color={"#FF0084"} />
-                <h3 className="text-base text-center ml-3">
-                  {new Date(event.date).toLocaleDateString()}
-                </h3>
-              </div>
-              <div className="flex flex-row items-center mt-5">
+              </IconLabel>
+              <IconLabel
+                label={`${event?.location?.name}, ${event?.location?.city}`}
+              >
                 <MapPin size={24} />
-                <h3 className="text-base text-center ml-3">
-                  {event?.location?.name}, {event?.location?.city}
-                </h3>
-              </div>
+              </IconLabel>
             </div>
+
             {/* CTA */}
             <div className="flex">
               <Button
