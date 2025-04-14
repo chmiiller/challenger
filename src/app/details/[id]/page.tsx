@@ -10,6 +10,7 @@ import Button from "@/app/components/Buttons/Button";
 import IconButton from "@/app/components/Buttons/IconButton";
 import IconLabel from "@/app/components/Labels/IconLabel";
 import { Map } from "@/app/components/Map";
+import Link from "next/link";
 
 type DetailsProps = {
   params: {
@@ -33,9 +34,11 @@ export default function Details({ params }: DetailsProps) {
   return (
     <div className="p-3 px-4">
       <header className="flex flex-row items-center justify-between">
-        <Logo />
+        <Link href={"/"}>
+          <Logo />
+        </Link>
         {/* Top Bat Action Buttons */}
-        <div className="bg-slate-800/75 flex row items-center justify-around py-1 rounded-lg">
+        <div className="bg-secondary-background flex row items-center justify-around py-1 rounded-lg">
           <IconButton onClick={() => {}}>{<Star size={24} />}</IconButton>
           <IconButton onClick={() => {}}>{<Share size={24} />}</IconButton>
         </div>
@@ -89,7 +92,7 @@ export default function Details({ params }: DetailsProps) {
               <div className="flex flex-col w-full mt-9 p-4">
                 <h1 className="text-2xl font-bold">{"More info"}</h1>
                 {/* Description container */}
-                <div className="w-full rounded-md bg-slate-800/75 p-3 mt-4">
+                <div className="w-full rounded-md bg-secondary-background p-3 mt-4">
                   <h1 className="text-base">{event.description}</h1>
                 </div>
               </div>

@@ -1,10 +1,11 @@
 "use client";
 
-import { Calendar, Loader } from "lucide-react";
+import { AArrowUp, Calendar, Loader } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SearchBar } from "../SearchBar";
 import { Card } from "../Card";
 import { type TicketEvent } from "@/types/TicketEvent";
+import IconButton from "../Buttons/IconButton";
 
 export function PopularEvents() {
   const [events, setEvents] = useState<TicketEvent[]>([]);
@@ -75,7 +76,20 @@ export function PopularEvents() {
         {eventsResult.map((event) => (
           <Card event={event} url={`/details/${event.id}`} />
         ))}
+        <UpButton />
       </main>
     </div>
   );
 }
+
+const UpButton = () => (
+  <div className="mt-4 flex w-full justify-start">
+    <IconButton
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+    >
+      <AArrowUp size={35} />
+    </IconButton>
+  </div>
+);

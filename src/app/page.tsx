@@ -1,4 +1,3 @@
-import { Book, ListTodo } from "lucide-react";
 import { Logo } from "./components/Logo";
 import { PopularEvents } from "./components/PopularEvents";
 

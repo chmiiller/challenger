@@ -11,7 +11,7 @@ export function SearchBar({ onChange }: SearchBarProps) {
       <input
         className="bg-transparent text-base p-1 w-full text-foreground ml-1 outline-none"
         type="text"
-        placeholder="Search"
+        placeholder="Search artists, events, places..."
         onChange={(e) => {
           const searchTerm = e.currentTarget.value;
           debounce(() => {
