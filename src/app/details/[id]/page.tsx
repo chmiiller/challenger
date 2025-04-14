@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Calendar, MapPin, Star, Share } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 
 import { Logo } from "../../components/Logo";
 import { type TicketEvent } from "@/types/TicketEvent";
 import Button from "@/app/components/Buttons/Button";
-import IconButton from "@/app/components/Buttons/IconButton";
 import IconLabel from "@/app/components/Labels/IconLabel";
 import { Map } from "@/app/components/Map";
 import Link from "next/link";
+import TopBarActions from "@/app/components/TopBarActions";
 
 type DetailsProps = {
   params: {
@@ -20,6 +20,7 @@ type DetailsProps = {
 export default function Details({ params }: DetailsProps) {
   const { id } = params;
   const [event, setEvent] = useState<TicketEvent | null>(null);
+  const [showDialog, setShowDialog] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchEvent = async (id: string) => {
@@ -33,15 +34,26 @@ export default function Details({ params }: DetailsProps) {
 
   return (
     <div className="p-3 px-4">
+      {showDialog && (
+        <div className="flex items-center justify-between h-8 p-2 mb-2 rounded bg-primary">
+          <h1 className="text-lg text-center text-white">
+            {`copied event's link to clipboard`}
+          </h1>
+        </div>
+      )}
       <header className="flex flex-row items-center justify-between">
         <Link href={"/"}>
           <Logo />
         </Link>
-        {/* Top Bat Action Buttons */}
-        <div className="bg-secondary-background flex row items-center justify-around py-1 rounded-lg">
-          <IconButton onClick={() => {}}>{<Star size={24} />}</IconButton>
-          <IconButton onClick={() => {}}>{<Share size={24} />}</IconButton>
-        </div>
+        {/* Top Bar Action Buttons */}
+        {event && (
+          <TopBarActions
+            event={event}
+            showDialog={(shouldDisplay: boolean) => {
+              setShowDialog(shouldDisplay);
+            }}
+          />
+        )}
       </header>
       {event && (
         <div className="flex justify-center">
