@@ -74,7 +74,7 @@ export function PopularEvents() {
           </div>
         )}
         {eventsResult.map((event) => (
-          <Card event={event} url={`/details/${event.id}`} />
+          <Card key={event.id} event={event} url={`/details/${event.id}`} />
         ))}
         <UpButton />
       </main>

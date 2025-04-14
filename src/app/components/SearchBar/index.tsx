@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import { localize } from "@/lib/localization";
 
 type SearchBarProps = {
   onChange: (searchValue: string) => void;
@@ -11,7 +12,7 @@ export function SearchBar({ onChange }: SearchBarProps) {
       <input
         className="bg-transparent text-base p-1 w-full text-foreground ml-1 outline-none"
         type="text"
-        placeholder="Search artists, events, places..."
+        placeholder={localize("searchPlaceHolder")}
         onChange={(e) => {
           const searchTerm = e.currentTarget.value;
           debounce(() => {
