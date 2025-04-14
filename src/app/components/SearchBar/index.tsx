@@ -7,7 +7,7 @@ type SearchBarProps = {
 
 export function SearchBar({ onChange }: SearchBarProps) {
   return (
-    <view className="flex row items-center p-1 border border-foreground rounded-md">
+    <div className="flex row items-center p-1 border border-foreground rounded-md">
       <Search />
       <input
         className="bg-transparent text-base p-1 w-full text-foreground ml-1 outline-none"
@@ -20,7 +20,7 @@ export function SearchBar({ onChange }: SearchBarProps) {
           });
         }}
       />
-    </view>
+    </div>
   );
 }
 
