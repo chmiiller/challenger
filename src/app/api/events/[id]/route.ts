@@ -11,13 +11,20 @@ type GetEventByIdParams = {
 export async function GET(_: Request, { params }: GetEventByIdParams) {
   const { id } = params;
 
-  const evt: TicketEvent | null = await database.getEvent(Number(id));
+  const defaultEvent = {
+    id: 0,
+    name: '',
+    alerts: 0,
+    date: '',
+    locationId: 0,
+    description: '',
+    imageUrl: '',
+  };
+  const evt: TicketEvent = await database.getEvent(Number(id)) ?? defaultEvent;
   const locations: Map<number, EventLocation> = await database.getLocations();
-
-  if (!evt) return null;
   
   return Response.json({
       ...evt,
-      location: locations.get(evt.locationId) ?? null,
+      location: locations.get(evt?.locationId) ?? null,
   })
 }
