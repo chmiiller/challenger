@@ -6,7 +6,11 @@ type Translations = {
 
 const translations: Translations = {
   en: {
+    popularEventsTitle: 'Popular events',
     searchPlaceHolder: 'Search artists, events, places...',
+    detailsCTAButton: 'Buy tickets now!',
+    moreInfoTitle: 'More info',
+    mapTitle: 'Map',
   },
 };
 

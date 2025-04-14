@@ -6,6 +6,7 @@ import { SearchBar } from "../SearchBar";
 import { Card } from "../Card";
 import { type TicketEvent } from "@/types/TicketEvent";
 import IconButton from "../Buttons/IconButton";
+import { localize } from "@/lib/localization";
 
 export function PopularEvents() {
   const [events, setEvents] = useState<TicketEvent[]>([]);
@@ -58,7 +59,8 @@ export function PopularEvents() {
     <div>
       <header className="p-2">
         <h1 className="text-xl text-foreground md:col-span-3 flex items-center gap-2 mb-7">
-          <Calendar /> Popular events
+          <Calendar />
+          {localize("popularEventsTitle")}
         </h1>
         <SearchBar
           onChange={(term) => {
