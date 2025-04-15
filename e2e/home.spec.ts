@@ -11,9 +11,6 @@ test('if has TicketSwap Logo', async ({ page }) => {
   await page.goto('/');
   const logo = await page.locator('[data-testid="ticketSwapLogo"]').first();
   await expect(logo).toBeVisible();
-  
-  // Expects page to have a heading with the name of Installation.
-  // await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 
 test('if has a search bar', async ({ page }) => {
