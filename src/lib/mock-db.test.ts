@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { database } from './mock-db'
 import { getEvents, getLocations } from './mock-data'
-import { TicketEvent } from '../types/TicketEvent'
+import { type TicketEvent } from '@/types/TicketEvent'
+import { type EventLocation } from '@/types/EventLocation';
 
 // mocking `mock-data` functions
 vi.mock('./mock-data', () => {
@@ -13,6 +14,7 @@ vi.mock('./mock-data', () => {
 
 describe('testing database methods', () => {
   let mockEvents: TicketEvent[];
+  let mockLocations: EventLocation[];
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -21,7 +23,13 @@ describe('testing database methods', () => {
       { id: 2, name: "Awakenings", alerts: 1, date: "2021-06-26T12:00:00+02:00", locationId: 2, description: "", imageUrl: "" },
       { id: 3, name: "Harry", alerts: 1, date: "2021-03-27T20:00:00+01:00", locationId: 3, description: null, imageUrl: "" },
       { id: 4, name: "Down", alerts: 1, date: "2021-07-02T10:00:00+02:00", locationId: 4, description: "", imageUrl: "" },
-    ] as TicketEvent[];
+    ];
+    mockLocations = [
+      {id: 1,name: "Biddinghuizen",city: "Dronten",country: "Netherlands",imageUrl: "" },
+      {id: 2,name: "Recreatiegebied Spaarnwoude",city: "Velsen",country: "Netherlands",imageUrl: "" },
+      {id: 3,name: "Ziggo Dome",city: "Amsterdam",country: "Netherlands",imageUrl: "" },
+      {id: 4,name: "Ficarystraat 9",city: "Nijmegen",country: "Netherlands",imageUrl: "" },
+    ];
   });
 
   it('should test if getPopularEvents returns the requested number of events', async () => {
@@ -99,5 +107,19 @@ describe('testing database methods', () => {
 
     expect(event).toBeNull();
     expect(getEvents).toHaveBeenCalledTimes(1);
+  });
+  
+  it('should return a Map of locations', async () => {
+    const expectedMap = new Map<number, EventLocation>(mockLocations.map(location => [location.id, location]));
+    (getLocations as any).mockResolvedValue(expectedMap);
+
+    const locationsMap = await database.getLocations();
+
+    expect(locationsMap).toBeInstanceOf(Map);
+    expect(locationsMap.size).toBe(mockLocations.length);
+    expect(locationsMap.get(1)).toEqual(mockLocations[0]);
+    expect(locationsMap.get(2)).toEqual(mockLocations[1]);
+
+    expect(getLocations).toHaveBeenCalledTimes(1);
   });
 });
