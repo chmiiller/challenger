@@ -29,7 +29,7 @@ export function Card({ event, url }: CardProps) {
         src={event.imageUrl}
         width={320}
         height={200}
-        alt="event image"
+        alt={`${event.name} banner image`}
       />
     </Link>
   );
