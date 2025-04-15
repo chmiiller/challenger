@@ -122,4 +122,26 @@ describe('testing database methods', () => {
 
     expect(getLocations).toHaveBeenCalledTimes(1);
   });
+  
+  it('should return a location with a specified ID', async () => {
+    const expectedMap = new Map<number, EventLocation>(mockLocations.map(location => [location.id, location]));
+    const expectedLocation = expectedMap.get(3) as EventLocation;
+    (getLocations as any).mockResolvedValue(expectedMap);
+
+    const location = await database.getLocation(3) as EventLocation;
+
+    expect(location.id).toEqual(expectedLocation.id);
+    expect(location).toEqual(expectedLocation);
+
+    expect(getLocations).toHaveBeenCalledTimes(1);
+  });
+  
+  it('should return null when getting a location with an non-existing ID', async () => {
+    const expectedMap = new Map<number, EventLocation>(mockLocations.map(location => [location.id, location]));
+    (getLocations as any).mockResolvedValue(expectedMap);
+
+    const location = await database.getLocation(42);
+    expect(location).toBeNull();
+    expect(getLocations).toHaveBeenCalledTimes(1);
+  });
 });
