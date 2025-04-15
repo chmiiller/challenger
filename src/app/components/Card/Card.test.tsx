@@ -3,7 +3,7 @@ import { expect, describe, it } from "vitest";
 
 import { Card } from "../Card";
 
-describe("When rendering IconLabel", () => {
+describe("When rendering an event Card", () => {
   const mockEvent = {
     id: 8,
     name: "The Weeknd",
