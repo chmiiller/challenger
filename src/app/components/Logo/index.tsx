@@ -1,6 +1,6 @@
 export function Logo() {
   return (
-    <div className="w-32 fill-primary">
+    <div className="w-32 fill-primary" data-testid="ticketSwapLogo">
       <svg
         viewBox="0 0 244 35"
         fillRule="evenodd"
