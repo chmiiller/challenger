@@ -1,6 +1,6 @@
 # TicketSwap Challenger
 
-🔗 https://challenger-two.vercel.app
+🔗 <a href="https://challenger-two.vercel.app" target="_blank">https://challenger-two.vercel.app</a>
 
 This is an assessment project proposed by TicketSwap and developed by Carlos Zinato.
 
