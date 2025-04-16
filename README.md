@@ -8,8 +8,7 @@ https://github.com/user-attachments/assets/43456d40-38e8-4a2b-bdcc-5efff03a0624
 
 ## Purpose of this project
 
-The idea of this project is to give the users a list of the most popular events and their details. The list contains a search bar that allows the user to filter the list of events by name or location. The details page contains more information about the event, a small map view showing the location of this event and a top bar with two buttons: favorites and share.
-The application was created by the team [@TicketSwap](https://github.com/TicketSwap) using ReactJS, TypeScript and Tailwind CSS and I developed some additional features on top of the initial project.
+The project delivers a user-friendly list of popular events, complete with detailed information. Users can filter the list using the search bar to find events by name or location. Each event detail page offers further information, a map for location context, and 'Favorites' and 'Share' buttons in the top bar. The application was built by the [@TicketSwap](https://github.com/TicketSwap) team using ReactJS, TypeScript, and Tailwind CSS. I expanded on the initial project by implementing several key features.
 
 ## Requirements
 
@@ -70,5 +69,5 @@ A quick look on how the E2E results look like:
 
 ## Design
 
-Since one of the goals of the challenger project was to create a details screen with more information about the Popular Events, I took inspiration on the provided screens and components and started by designing a mobile-first details screen on Figma. With the mobile-first prototype done, I expanded it to a desktop view and started working on the implementation of those screens in the code. Here's a screenshot of how the prototype looks like on Figma:  
+As one of the Challenger project's goals was to create the details screen for the events, I designed a mobile-first version in Figma, inspired by existing screens and components. Following the completion of the mobile prototype, I extended the design to a desktop view and subsequently started the implementation of these screens in code. Here's a screenshot of how the prototype looks like on Figma:  
 ![Results](./docs/figma_demo.png)
