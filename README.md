@@ -1,45 +1,72 @@
-# TicketSwap challenger 🚀
+# TicketSwap Challenger
 
-Thank you for doing our challenger. The goal would be to finish the todo-list. If you have any questions you can always [contact us](mailto:rob@ticketswap.com).
+🔗 https://challenger-two.vercel.app
 
-## Approach
+This is an assessment project proposed by TicketSwap and developed by Carlos Zinato.
 
-The challenger is setup in a way for you to showcase your creativity, eye for detail, UX skills and overall knowledge of HTML, CSS and TypeScript. Inside the challenge you'll find your goals set. There is a mocked database available inside the `/src/lib` folder. Feel free to make changes or add new data where needed. In general feel free to use other tools when needed if you have good reasons for this.
+![Demo](./docs/demo.mp4)
 
-We've timeboxed this challenge for roughly _4_ hours. Some of these goals should be pretty straight forward. It's completely up to you how far you want to take it, but keep the timebox in mind. The challenge starts when you're installing the project.
+## Purpose of this project
 
-## Assignment
+The idea of this project is to give the users a list of the most popular events and their details. The list contains a search bar that allows the user to filter the list of events by name or location. The details page contains more information about the event, a small map view showing the location of this event and a top bar with two buttons: favorites and share.
+The application was created by the team [@TicketSwap](https://github.com/TicketSwap) using ReactJS, TypeScript and Tailwind CSS and I developed some additional features on top of the initial project.
 
-### The Challenger has the following goals:
+## Requirements
 
-- Implement a search feature to find events.
-- Add a filter to narrow events by location.
-- Create an event detail page to display event information.
+In order to run this app, I'm using the following tools and versions:
 
-### Optional:
+- NodeJS: 22.13.0
+- npm: 10.9.2
+- ReactJS: ^18
+- vitest: ^3
+- playwright: ^1.51
 
-- Propose an additional feature - this can be a feature implementation, an API proposal, or any other improvement you see fit.
-- Add automated tests where needed.
-- Create a location detail page to display location-specific information.
+## Building
 
-## Setup
+First clone or download this repository and in a terminal shell type:
 
-First of all, you need to setup your local environment.
-If you don't have [node/npm](https://nodejs.org/en/) installed yet, be sure to do so.
-
-```shell script
-> git clone git@github.com:TicketSwap/challenger.git
-> cd challenger
-> npm i
-> npm run dev
+```
+$ npm install
 ```
 
-The server will start at [localhost:3000](http://localhost:3000), where you can find everything you need to start with the challenger.
+Then run the app with
 
-## Handing in the assessment
+```
+$ npm run dev
+```
 
-When you're finished you can send it to us in reply of the mail you got with this assessment or share the repo with [@RobVermeer](https://github.com/robvermeer).
+The app should be available at http://localhost:3000/
 
-### Good luck
+## Dependencies
 
-And again if you have any questions, [let us know](mailto:rob@ticketswap.com)! 🤩
+Besides the dependencies already installed in the initial project I've added 4 new dependencies:
+
+1. [Vitest](https://vitest.dev/) - for unit testing
+2. [Playwright](https://playwright.dev/) - for E2E UI testing
+3. [TomTom web-sdk-maps](https://developer.tomtom.com/maps-sdk-web-js/overview/product-information/introduction) and web-sdk-services
+
+## Testing
+
+Unit tests were added to the project using [Vitest](https://vitest.dev/) and [vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react) for React components testing. Some important test files include `./src/lib/mock-db.test.ts` and `./src/app/components/Card/Card.test.tsx`.
+E2E UI tests were added using [Playwright](https://playwright.dev/). The test files can be found on `./e2e`.
+
+In order to run the Unit Test, you can run the following command:
+
+```
+$ npm run test
+```
+
+![Results](./docs/vitest_results.png)
+
+If want to run the E2E tests with Playwright you can run the following command:
+
+```
+$ npm run test-e2e
+```
+
+![Results](./docs/playwright_results.png)
+
+## Design
+
+Since one of the goals of the challenger project was to create a details screen with more information about the Popular Events, I took inspiration on the provided screens and components and started by designing a mobile-first details screen on Figma. With the mobile-first prototype done, I expanded it to a desktop view and started working on the implementation of those screens in the code. Here's a screenshot of how the prototype looks like on Figma:  
+![Results](./docs/figma_demo.png)
