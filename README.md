@@ -4,7 +4,7 @@
 
 This is an assessment project proposed by TicketSwap and developed by Carlos Zinato.
 
-![Demo](./docs/demo.mp4)
+https://github.com/user-attachments/assets/43456d40-38e8-4a2b-bdcc-5efff03a0624
 
 ## Purpose of this project
 
@@ -56,6 +56,7 @@ In order to run the Unit Test, you can run the following command:
 $ npm run test
 ```
 
+A quick look on how the test results should look like:
 ![Results](./docs/vitest_results.png)
 
 If want to run the E2E tests with Playwright you can run the following command:
@@ -64,6 +65,7 @@ If want to run the E2E tests with Playwright you can run the following command:
 $ npm run test-e2e
 ```
 
+A quick look on how the E2E results look like:
 ![Results](./docs/playwright_results.png)
 
 ## Design
